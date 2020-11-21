@@ -147,24 +147,33 @@ eglInitialize(EGLDisplay dpy,EGLint * major,EGLint * minor)
   // Have we done this before?
   if(rsxegl_initialized == 0) {
     // Allocate memory that will be shared with the RSX:
-    rsx_shared_memory = memalign(1024*1024,rsxgl_init_parameters.gcm_buffer_size);
+    if (rsx_shared_memory) {
+      // reuse it
+      memset(rsx_shared_memory, 0, rsxgl_init_parameters.gcm_buffer_size);
+    } else {
+      rsx_shared_memory = memalign(1024*1024,rsxgl_init_parameters.gcm_buffer_size);
+    }
+
     if(rsx_shared_memory == 0) {
       RSXEGL_ERROR(EGL_BAD_ALLOC,EGL_FALSE);
     }
 
     // Initialize RSX:
-    gcmContextData * _rsx_gcm_context ATTRIBUTE_PRXPTR;
-    int r = gcmInitBody(&_rsx_gcm_context,rsxgl_init_parameters.command_buffer_length * sizeof(uint32_t),rsxgl_init_parameters.gcm_buffer_size,rsx_shared_memory);
-    if(r != 0) {
-      RSXEGL_ERROR(EGL_BAD_ALLOC,EGL_FALSE);
+    if (!rsx_gcm_context) {
+      gcmContextData * _rsx_gcm_context ATTRIBUTE_PRXPTR;
+      int r = gcmInitBody(&_rsx_gcm_context,rsxgl_init_parameters.command_buffer_length * sizeof(uint32_t),rsxgl_init_parameters.gcm_buffer_size,rsx_shared_memory);
+      if(r != 0) {
+        RSXEGL_ERROR(EGL_BAD_ALLOC,EGL_FALSE);
+      }
+      rsx_gcm_context = _rsx_gcm_context;
     }
-    rsx_gcm_context = _rsx_gcm_context;
 
     gcmSetFlipMode(GCM_FLIP_VSYNC);
     gcmResetFlipStatus();
 
-    //
-    rsx_screen = nvfx_screen_create(0);
+    if (!rsx_screen) {
+      rsx_screen = nvfx_screen_create(0);
+    }
 
     rsxegl_initialized = 1;
   }
@@ -199,7 +208,7 @@ eglTerminate(EGLDisplay dpy)
   // There seems to be a gcmTerminate... but not sure what its arguments are:
   // gcmTerminate();
   // Probably should free this too:
-  // free(rsx_shared_memory);
+  //free(rsx_shared_memory);
 
   rsxegl_initialized = 0;
 

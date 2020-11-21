@@ -37,6 +37,12 @@ extern "C" {
 #ifndef NO_MALLINFO
 #define NO_MALLINFO 0
 #endif  /* NO_MALLINFO */
+#define mspace_memalign m_mspace_memalign
+#define mspace_calloc m_mspace_calloc
+#define mspace_free m_mspace_free
+#define mspace_realloc m_mspace_realloc
+#define mspace_malloc m_mspace_malloc
+#define mspace_malloc_stats m_mspace_malloc_stats
 
 
 #if !ONLY_MSPACES
@@ -221,6 +227,12 @@ size_t dlmalloc_footprint();
 
 struct mallinfo dlmallinfo(void);
 #endif  /* NO_MALLINFO */
+#define mspace_memalign m_mspace_memalign
+#define mspace_calloc m_mspace_calloc
+#define mspace_free m_mspace_free
+#define mspace_realloc m_mspace_realloc
+#define mspace_malloc m_mspace_malloc
+#define mspace_malloc_stats m_mspace_malloc_stats
 
 /*
   independent_calloc(size_t n_elements, size_t element_size, void* chunks[]);

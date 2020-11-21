@@ -484,6 +484,12 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 #ifndef DLMALLOC_VERSION
 #define DLMALLOC_VERSION 20804
 #endif /* DLMALLOC_VERSION */
+#define mspace_memalign m_mspace_memalign
+#define mspace_calloc m_mspace_calloc
+#define mspace_free m_mspace_free
+#define mspace_realloc m_mspace_realloc
+#define mspace_malloc m_mspace_malloc
+#define mspace_malloc_stats m_mspace_malloc_stats
 
 #ifndef WIN32
 #ifdef _WIN32
