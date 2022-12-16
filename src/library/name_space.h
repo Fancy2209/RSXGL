@@ -192,7 +192,7 @@ public:
       const size_t bitfield_size = location.index + 1;
       
       if(bitfield_size > bitfield().size) {
-	std::cout << "resizing bitfield array: " << bitfield_size << std::endl;
+	//std::cout << "resizing bitfield array: " << bitfield_size << std::endl;
 	bitfield().resize(bitfield_size);
       }
       
