@@ -111,6 +111,8 @@ state_t::state_t()
   enable.rasterizer_discard = 0;
   enable.transform_feedback_program = 0;
   enable.transform_feedback_mode = 0;
+
+  enable.dither = 0;
 }
 
 namespace {
@@ -551,6 +553,16 @@ rsxgl_state_validate(rsxgl_context_t * ctx)
     gcm_emit_at(buffer,1,_ieee32_t(s -> pointSize).u);
     
     gcm_finish_n_commands(context,2);
+  }
+
+  // dither:
+  if(s -> invalid.parts.dither) {
+    buffer = gcm_reserve(context,2);
+
+    gcm_emit_method(&buffer,NV30_3D_DITHER_ENABLE,1);
+    gcm_emit(&buffer,0);
+
+    gcm_finish_commands(context,&buffer);
   }
 
   s -> invalid.all = 0;

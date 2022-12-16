@@ -104,12 +104,13 @@ struct state_t {
 	primitive_restart:1,
 	line_width:1,
 	point_size:1,
-	point_parameters:1;
+	point_parameters:1,
+	dither:1;
     } parts;
   } invalid;
 
   struct {
-    uint32_t blend:1, scissor:1, depth_test:1, primitive_restart:1, pointSize:1, conditional_render_status:2, rasterizer_discard:1, transform_feedback_program:1, transform_feedback_mode:4;
+    uint32_t blend:1, scissor:1, depth_test:1, primitive_restart:1, pointSize:1, conditional_render_status:2, rasterizer_discard:1, transform_feedback_program:1, transform_feedback_mode:4, dither:1;
   } enable;
 
   struct {

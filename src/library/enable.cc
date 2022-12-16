@@ -51,6 +51,10 @@ glEnable (GLenum cap)
   case GL_RASTERIZER_DISCARD:
     ctx -> state.enable.rasterizer_discard = 1;
     break;
+  case GL_DITHER:
+    ctx -> state.enable.dither = 1;
+    ctx -> state.invalid.parts.dither = 1;
+    break;
   default:
     RSXGL_ERROR_(GL_INVALID_ENUM);
   };
@@ -94,6 +98,10 @@ glDisable (GLenum cap)
   case GL_RASTERIZER_DISCARD:
     ctx -> state.enable.rasterizer_discard = 0;
     break;
+  case GL_DITHER:
+    ctx -> state.enable.dither = 0;
+    ctx -> state.invalid.parts.dither = 0;
+    break;
   default:
     RSXGL_ERROR_(GL_INVALID_ENUM);
   };
@@ -129,6 +137,9 @@ glIsEnabled (GLenum cap)
     break;
   case GL_RASTERIZER_DISCARD:
     RSXGL_NOERROR(ctx -> state.enable.rasterizer_discard);
+    break;
+  case GL_DITHER:
+    RSXGL_NOERROR(ctx -> state.enable.dither);
     break;
   default:
     RSXGL_ERROR(GL_INVALID_ENUM,GL_FALSE);
