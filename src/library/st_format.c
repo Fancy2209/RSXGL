@@ -1836,14 +1836,23 @@ rsxgl_choose_source_format(GLenum format,GLenum type)
     else if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
       return PIPE_FORMAT_R8G8B8A8_UNORM;
     }
+    else if(type == GL_UNSIGNED_SHORT_4_4_4_4) {
+      return PIPE_FORMAT_B4G4R4A4_UNORM;
+    }
   }
   else if(format == GL_RGBA8) {
     if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
       return PIPE_FORMAT_R8G8B8A8_UNORM;
     }
+    else if(type == GL_UNSIGNED_SHORT_4_4_4_4) {
+      return PIPE_FORMAT_B4G4R4A4_UNORM;
+    }
   }
   else if(format == GL_RGBA4) {
     if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
+      return PIPE_FORMAT_B4G4R4A4_UNORM;
+    }
+    else if(type == GL_UNSIGNED_SHORT_4_4_4_4) {
       return PIPE_FORMAT_B4G4R4A4_UNORM;
     }
   }
@@ -1853,6 +1862,9 @@ rsxgl_choose_source_format(GLenum format,GLenum type)
     }
     else if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
       return PIPE_FORMAT_B8G8R8A8_UNORM;
+    }
+    else if(type == GL_UNSIGNED_SHORT_4_4_4_4) {
+      return PIPE_FORMAT_B4G4R4A4_UNORM;
     }
   }
   else if(format == GL_ALPHA) {
