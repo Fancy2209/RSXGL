@@ -1833,10 +1833,26 @@ rsxgl_choose_source_format(GLenum format,GLenum type)
     else if(type == GL_FLOAT) {
       return PIPE_FORMAT_R32G32B32A32_FLOAT;
     }
+    else if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
+      return PIPE_FORMAT_R8G8B8A8_UNORM;
+    }
+  }
+  else if(format == GL_RGBA8) {
+    if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
+      return PIPE_FORMAT_R8G8B8A8_UNORM;
+    }
+  }
+  else if(format == GL_RGBA4) {
+    if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
+      return PIPE_FORMAT_B4G4R4A4_UNORM;
+    }
   }
   else if(format == GL_BGRA) {
     if(type == GL_UNSIGNED_BYTE) {
       return PIPE_FORMAT_A8R8G8B8_UNORM;
+    }
+    else if(type == GL_UNSIGNED_INT_8_8_8_8_REV) {
+      return PIPE_FORMAT_B8G8R8A8_UNORM;
     }
   }
   else if(format == GL_ALPHA) {
@@ -1853,6 +1869,14 @@ rsxgl_choose_source_format(GLenum format,GLenum type)
     }
     else if(type == GL_BYTE) {
       return PIPE_FORMAT_L8_SNORM;
+    }
+  }
+  else if(format == GL_LUMINANCE_ALPHA) {
+    if(type == GL_UNSIGNED_BYTE) {
+      return PIPE_FORMAT_L8A8_UNORM;
+    }
+    else if(type == GL_BYTE) {
+      return PIPE_FORMAT_L8A8_SNORM;
     }
   }
 
