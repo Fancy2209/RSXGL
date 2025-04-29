@@ -22,6 +22,7 @@
 #include "gl_fifo.h"
 #include "rsxgl_assert.h"
 #include "rsxgl_limits.h"
+#include "usleep.h"
 
 //
 static inline void

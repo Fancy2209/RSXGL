@@ -30,8 +30,10 @@ export PYTHON=/path/to/python-2.6
 
 Debian/Docker example dependencies:
 ```
-apt-get install python-libxml2 xutils-dev nvidia-cg-toolkit
+apt-get install python-libxml2 xutils-dev nvidia-cg-toolkit xxd
 ```
+NOTE: you'll need to compile python-libxml2 from source if running on Ubuntu 22.04
+as it no longer ships the package
 
 The RSXGL library depends upon a toolchain that can generate binaries for the
 PS3's PPU, and also upon parts of the PSL1GHT SDK. The sample programs also

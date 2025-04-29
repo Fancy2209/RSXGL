@@ -41,8 +41,8 @@ extern "C" {
 # endif /* !__RSXGL_ASSERT_FUNC */
 #endif /* !NDEBUG */
 
-void _EXFUN(__rsxgl_assert_func, (const char *, int, const char *, const char *)
-	    _ATTRIBUTE ((__noreturn__)));
+void __rsxgl_assert_func(const char *file, int line, const char *func, const char *expr)
+   _ATTRIBUTE ((__noreturn__));
 
 #ifdef __cplusplus
 }
