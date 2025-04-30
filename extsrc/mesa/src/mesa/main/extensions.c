@@ -36,6 +36,7 @@
 #include "extensions.h"
 #include "mfeatures.h"
 #include "mtypes.h"
+extern char * strdup (const char *str);
 
 #define ALIGN(value, alignment)  (((value) + alignment - 1) & ~(alignment - 1))
 
@@ -59,7 +60,7 @@ struct extension {
    /** Set of API's in which the extension exists, as a bitset. */
    uint8_t api_set;
 
-   /** Year the extension was proposed or approved.  Used to sort the 
+   /** Year the extension was proposed or approved.  Used to sort the
     * extension string chronologically. */
    uint16_t year;
 };

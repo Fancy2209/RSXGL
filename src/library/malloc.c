@@ -481,6 +481,7 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 */
 
 /* Version identifier to allow people to support multiple versions */
+#include <time.h>
 #ifndef DLMALLOC_VERSION
 #define DLMALLOC_VERSION 20804
 #endif /* DLMALLOC_VERSION */

@@ -40,6 +40,9 @@
 #define YY_NO_UNISTD_H
 #endif
 
+extern char * strdup (const char *str);
+
+
 #define return_token_or_IDENTIFIER(condition, token)	\
    do {							\
       if (condition) {					\
@@ -165,6 +168,7 @@ szf    [HR]?
 cc     C?
 sat    (_SAT)?
 
+%option prefix="_mesa_program_lexer_"
 %option bison-bridge bison-locations reentrant noyywrap
 %%
 
@@ -397,7 +401,7 @@ ARRAYSHADOW2D             { return_token_or_IDENTIFIER(require_ARB_fp && require
    const unsigned s = swiz_from_char(yytext[1]);
    yylval->swiz_mask.swizzle = MAKE_SWIZZLE4(s, s, s, s);
    yylval->swiz_mask.mask = mask_from_char(yytext[1]);
-   return MASK1; 
+   return MASK1;
 }
 
 "."[xyzw]{4}              {

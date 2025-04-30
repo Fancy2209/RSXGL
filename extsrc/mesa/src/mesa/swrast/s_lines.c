@@ -32,7 +32,7 @@
 #include "s_feedback.h"
 #include "s_lines.h"
 #include "s_span.h"
-
+#include "s_fragprog.h"
 
 /*
  * Init the mask[] array to implement a line stipple.

@@ -17,6 +17,7 @@
 #define rsxgl_timestamp_H
 
 #include "sync.h"
+#include "unistd.h"
 
 // max_timestamp + 1 should be a power-of-two value.
 // Should not return 0, because this is reserved for indicating that an object is not waiting

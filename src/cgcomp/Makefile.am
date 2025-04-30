@@ -1,3 +1,4 @@
+AUTOMAKE_OPTIONS = subdir-objects
 bin_PROGRAMS = nv40asm
 bin_SCRIPTS = nv40c
 

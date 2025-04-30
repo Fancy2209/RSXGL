@@ -15,6 +15,10 @@
 extern "C" {
 #endif
 
+#ifndef _EXFUN
+# define _EXFUN(N,P) N P
+#endif
+
 #ifdef NDEBUG
 # define rsxgl_assert(__e) ((void)0)
 #else

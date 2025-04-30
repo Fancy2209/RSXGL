@@ -13,6 +13,8 @@
 #include <net/net.h>
 #include <sysutil/sysutil.h>
 #include <io/pad.h>
+#include <sys/time.h>
+#include <sys/select.h>
 
 #include <stdio.h>
 #include <unistd.h>
@@ -20,6 +22,7 @@
 #include <string.h>
 #include <errno.h>
 #include <math.h>
+extern int usleep(unsigned long microseconds);
 
 #include <time.h>
 
