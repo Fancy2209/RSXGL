@@ -276,7 +276,7 @@ glBufferData (GLenum target, GLsizeiptr size, const GLvoid* data, GLenum usage)
     RSXGL_ERROR_(GL_INVALID_ENUM);
   }
 
-  buffer_t * buffer = &ctx -> buffer_binding[rsx_target];
+  buffer_t * buffer = &(ctx -> buffer_binding[rsx_target]);
 
 #if 0
   // If a pending GPU operation uses this buffer, then orphan it:

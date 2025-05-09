@@ -60,7 +60,6 @@ SUFFIXES = .bin _bin.o _bin.h .png _png.o _png.h .vcg .fcg .vert .frag _vpo.o _f
 
 %.self: %.elf
 	@echo "[SELF] $@"
-	@$(STRIP) $< 
 	@$(SPRX) $<
 	@$(SELF) $< $@
 

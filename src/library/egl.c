@@ -550,7 +550,7 @@ eglCreateWindowSurface(EGLDisplay _dpy,EGLConfig _config,EGLNativeWindowType win
     RSXEGL_ERROR(EGL_BAD_ALLOC,EGL_NO_SURFACE);
   }
   
-  if(videoOutGetState(0, 0, &dpy -> state)) {
+  if(videoOutGetState(0, 0, &(dpy->state))) {
     RSXEGL_ERROR(EGL_BAD_ALLOC,EGL_NO_SURFACE);
   }
 
@@ -745,12 +745,14 @@ eglCreateContext(EGLDisplay dpy,EGLConfig config,EGLContext share_context,const 
   struct rsxegl_context_t * ctx = 0;
 
   switch(rsxegl_api) {
-  case EGL_OPENGL_API:
+  case EGL_OPENGL_API: {
     ctx = rsxgl_context_create(config,rsx_gcm_context,rsx_screen,rsxgl_object_context_create());
     assert(ctx -> callback != 0);
     RSXEGL_NOERROR(ctx);
-  default:
+  }
+  default: {
     RSXEGL_NOERROR(EGL_NO_CONTEXT);
+  }
   };
 }
 
