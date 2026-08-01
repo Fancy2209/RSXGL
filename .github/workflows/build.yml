@@ -20,7 +20,8 @@ jobs:
             export PS3DEV=/usr/local/ps3dev
             export PSL1GHT=$PS3DEV
             export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin
-            
+
+            sudo mkdir -p $PS3DEV
             sudo chown -R $USER: $PS3DEV
             git clone --depth=1 https://github.com/ps3dev/ps3dev
             cd ps3dev && ./build-all.sh && cd ..
