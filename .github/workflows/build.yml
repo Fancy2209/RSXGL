@@ -11,7 +11,7 @@ jobs:
         with:
             python-version: 'pypy2.7' 
       
-      - name: Build
+      - name: Prepare
         run: |
             sudo apt-get install autoconf automake bison flex gcc libelf-dev make \
             texinfo libncurses5-dev patch python3 subversion wget zlib1g-dev \
@@ -23,9 +23,15 @@ jobs:
 
             sudo mkdir -p $PS3DEV
             sudo chown -R $USER: $PS3DEV
-            git clone --depth=1 https://github.com/ps3dev/ps3dev
-            cd ps3dev && ./build-all.sh && cd ..
-            
+            wget https://github.com/ps3dev/ps3dev/releases/download/nightly-2026-07-26/ps3dev-linux-X64.tar.gz
+            tar xzvf ps3dev-linux-X64.tar.gz -C $PS3DEV
+            rm ps3dev-linux-X64.tar.gz
+
+      - name: Build
+        run: |
+            export PS3DEV=/usr/local/ps3dev
+            export PSL1GHT=$PS3DEV
+            export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin
             export PYTHON=/opt/hostedtoolcache/PyPy/2.7.18/x64/bin/python
             
             autoreconf -fiv
