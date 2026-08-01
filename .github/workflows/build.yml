@@ -17,7 +17,7 @@ jobs:
             texinfo libncurses5-dev patch python3 subversion wget zlib1g-dev \
             libtool libtool-bin python3-dev bzip2 libgmp3-dev pkg-config g++ libssl-dev clang
             
-            sudo chown -R $USER:$USER $PS3DEV
+            sudo chown -R $USER: $PS3DEV
             git clone --depth=1 https://github.com/ps3dev/ps3dev
             cd ps3dev && ./build-all.sh && cd ..
             
