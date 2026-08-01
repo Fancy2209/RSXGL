@@ -31,7 +31,7 @@ jobs:
             wget https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.14.tar.xz
             tar xvf libxml2-2.9.14.tar.xz
             cd libxml2-2.9.14
-            ./configure --with-python --prefix=/usr
+            ./configure --with-python=/opt/hostedtoolcache/PyPy/2.7.18/x64/bin/python --prefix=/usr
             make -j$(nproc)
             sudo make install
             
