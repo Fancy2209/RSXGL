@@ -42,8 +42,6 @@ jobs:
             export PSL1GHT=$PS3DEV
             export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin
             export PYTHON=/opt/hostedtoolcache/PyPy/2.7.18/x64/bin/python
-
-            $PYTHON -m pip install PyXML
             
             autoreconf -fiv
             mkdir $HOME/OUT
