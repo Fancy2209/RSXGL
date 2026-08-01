@@ -16,15 +16,14 @@ jobs:
             sudo apt-get install autoconf automake bison flex gcc libelf-dev make \
             texinfo libncurses5-dev patch python3 subversion wget zlib1g-dev \
             libtool libtool-bin python3-dev bzip2 libgmp3-dev pkg-config g++ libssl-dev clang
+
+            export PS3DEV=/usr/local/ps3dev
+            export PSL1GHT=$PS3DEV
+            export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin
             
             sudo chown -R $USER: $PS3DEV
             git clone --depth=1 https://github.com/ps3dev/ps3dev
             cd ps3dev && ./build-all.sh && cd ..
-            
-            export PS3DEV=/usr/local/ps3dev
-            export PSL1GHT=$PS3DEV
-        
-            export PATH=$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin
             
             export PYTHON=/opt/hostedtoolcache/PyPy/2.7.18/x64/bin/python
             
