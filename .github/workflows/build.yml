@@ -35,6 +35,7 @@ jobs:
             make -j$(nproc)
             sudo make install
             cp -r /usr/site-packages/* /opt/hostedtoolcache/PyPy/2.7.18/x64/site-packages/
+            cp /opt/hostedtoolcache/PyPy/2.7.18/x64/site-packages/libxml2mod.so /opt/hostedtoolcache/PyPy/2.7.18/x64/site-packages/libxml2mod.x86_64-linux-gnu.so
             
 
       - name: Build
