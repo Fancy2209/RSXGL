@@ -24,7 +24,7 @@ jobs:
             sudo mkdir -p $PS3DEV
             sudo chown -R $USER: $PS3DEV
             wget https://github.com/ps3dev/ps3dev/releases/download/nightly-2026-07-26/ps3dev-linux-X64.tar.gz
-            tar --strip-components=1 xzvf ps3dev-linux-X64.tar.gz -C $PS3DEV
+            tar --strip-components=1 -xzvf ps3dev-linux-X64.tar.gz -C $PS3DEV
             rm ps3dev-linux-X64.tar.gz
 
       - name: Build
