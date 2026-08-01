@@ -15,7 +15,8 @@ jobs:
         run: |
             sudo apt-get install autoconf automake bison flex gcc libelf-dev make \
             texinfo libncurses5-dev patch python3 subversion wget zlib1g-dev \
-            libtool libtool-bin python3-dev bzip2 libgmp3-dev pkg-config g++ libssl-dev clang xutils-dev nvidia-cg-toolkit
+            libtool libtool-bin python3-dev bzip2 libgmp3-dev pkg-config g++ \
+            libssl-dev clang xutils-dev nvidia-cg-toolkit
 
             export PS3DEV=/usr/local/ps3dev
             export PSL1GHT=$PS3DEV
@@ -26,6 +27,14 @@ jobs:
             wget https://github.com/ps3dev/ps3dev/releases/download/nightly-2026-07-26/ps3dev-linux-X64.tar.gz
             tar --strip-components=1 -xzvf ps3dev-linux-X64.tar.gz -C $PS3DEV
             rm ps3dev-linux-X64.tar.gz
+
+            wget https://download.gnome.org/sources/libxml2/2.9/libxml2-2.9.14.tar.xz
+            tar xvf libxml2-2.9.14.tar.xz
+            cd libxml2-2.9.14
+            ./configure --with-python --prefix=/usr
+            make -j$(nproc)
+            sudo make install
+            
 
       - name: Build
         run: |
