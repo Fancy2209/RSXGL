@@ -26,6 +26,7 @@ jobs:
             ./configure --with-ppu-prefix=$HOME/OUT --prefix=$HOME/OUT --disable-samples
             make -j$(nproc)
             make install
+            echo "DOING THE THING"
             find $HOME/OUT
             7z a OUT.zip $HOME/OUT
 
