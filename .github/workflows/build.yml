@@ -34,8 +34,7 @@ jobs:
             ./configure --with-python=/opt/hostedtoolcache/PyPy/2.7.18/x64/bin/python --prefix=/usr
             make -j$(nproc)
             sudo make install
-            echo && echo
-            ls /opt/hostedtoolcache/PyPy/2.7.18/x64/
+            cp -r /usr/site-packages/* /opt/hostedtoolcache/PyPy/2.7.18/x64/site-packages/
             
 
       - name: Build
